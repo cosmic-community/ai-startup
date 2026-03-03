@@ -14,11 +14,14 @@ export default function PricingCard({ tier }: PricingCardProps) {
   const isPopular = tier.metadata?.is_popular === true;
   const ctaText = tier.metadata?.cta_text || 'Get Started';
 
-  // Parse features — support newline or comma separated
-  const features = planFeatures
-    .split(/[\n,]+/)
-    .map((f) => f.trim())
-    .filter(Boolean);
+  // Changed: Normalize plan features to avoid split errors when not a string
+  const features =
+    Array.isArray(planFeatures)
+      ? planFeatures.map((feature) => String(feature).trim()).filter(Boolean)
+      : String(planFeatures)
+          .split(/[\n,]+/)
+          .map((feature) => feature.trim())
+          .filter(Boolean);
 
   return (
     <div
