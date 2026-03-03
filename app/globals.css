@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #020617;
+    color: #f1f5f9;
+  }
+
+  ::selection {
+    background-color: rgba(124, 58, 237, 0.4);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-surface-800/50 backdrop-blur-sm border border-surface-700/50 rounded-2xl;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-cyan-400 to-emerald-400;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 px-4 sm:px-6 lg:px-8;
+  }
+}
